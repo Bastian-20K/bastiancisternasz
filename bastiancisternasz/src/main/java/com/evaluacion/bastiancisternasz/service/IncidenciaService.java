@@ -21,4 +21,16 @@ public class IncidenciaService {
     public List<Incidencia> readAll(){
         return incidenciaRepository.leerTodos();
     }
+
+    public Incidencia readById(int id){
+        return incidenciaRepository.incidenciaporId(id);
+    }
+
+    public Incidencia updateIncidencia(int id, Incidencia incidencia){
+        return incidenciaRepository.modificarIncidencia(id, incidencia);
+    }
+
+    public String delete(int id){
+        return incidenciaRepository.borrar(id);
+    }
 }

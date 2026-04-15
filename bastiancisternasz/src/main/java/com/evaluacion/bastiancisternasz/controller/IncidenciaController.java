@@ -14,8 +14,12 @@ import jakarta.validation.Valid;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PutMapping;
+
 
 
 @RestController
@@ -44,5 +48,21 @@ public class IncidenciaController {
         }
         return ResponseEntity.ok(lista);
     }
+
+
+    @GetMapping("{id}")
+    public Incidencia getIncidenciaById(@PathVariable int id){
+        return incidenciaService.readById(id);
+    }
     
+    
+    @PutMapping("{id}")
+    public Incidencia putIncidencia(@PathVariable int id, @RequestBody Incidencia incidencia ){
+        return incidenciaService.updateIncidencia(id, incidencia);
+    }
+
+    @DeleteMapping("{id}")
+    public String deleteIncidencia(@PathVariable int id){
+        return incidenciaService.delete(id);
+    }
 }

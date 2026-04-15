@@ -21,5 +21,35 @@ public class IncidenciaRepository {
         return incidencias;
     }
 
-    public Incidencia modificarIncidencia
+
+    public Incidencia incidenciaporId(int id){
+        for(Incidencia incidencia : incidencias){
+            if(id == incidencia.getId()){
+                return incidencia;
+            }
+        }
+        return null;
+    }
+
+    public Incidencia modificarIncidencia(int id, Incidencia incidencia){
+        Incidencia buscado = incidenciaporId(id);
+        if(buscado != null){
+            buscado.setDescripcionProblema(incidencia.getDescripcionProblema());
+            buscado.setEstado(incidencia.getEstado());
+            buscado.setUsuarioReporta(incidencia.getUsuarioReporta());
+            buscado.setNivelPrioridad(incidencia.getNivelPrioridad());
+            buscado.setUsuarioReporta(incidencia.getUsuarioReporta());
+        }
+        return null;
+    }
+    
+    public String borrar(int id){
+        if(incidencias.removeIf(inc -> inc.getId() == id)){
+            return "Libro eliminado";
+        }
+        return "Error al eliminar";
+    }
+
+
+
 }
